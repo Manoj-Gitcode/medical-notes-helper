@@ -1,49 +1,43 @@
 # Medical Notes Helper
 
-[![Built with askThili](https://ask.thili.ai/api/v1/public/projects/dgtg7wpgzp/badge.svg)](https://ask.thili.ai/b/dgtg7wpgzp)
+[![Built with askThili](https://ask.thili.ai/api/v1/public/projects/medical-notes-helper/badge.svg)](https://ask.thili.ai)
 
-The Medical Notes Helper is a CLI tool designed for clinic staff to streamline the drafting of administrative medical notes. It uses a next-word prediction engine, built from scratch, to offer context-aware suggestions, enhancing consistency and efficiency in documentation. This project demonstrates your ability to apply language models for practical text generation tasks, as taught in `lfllm-lfnextword`.
+A command-line tool that helps clinic staff draft administrative sections of medical notes. It suggests the next word using an n-gram language model trained on an anonymized corpus. It runs on your laptop with no API key, no downloads and no extra packages.
 
-## What you are building
+## How it works
 
-**Goal.** You will build a command-line interface (CLI) tool that helps clinic staff draft administrative sections of medical notes by generating next-word suggestions, ensuring consistency and reducing manual typing.
-
-**Done when.** The project is complete when you have a CLI tool that takes user input, provides next-word suggestions using an n-gram language model trained on medical text, and allows clinic staff to interact with the suggestion engine.
-
-## Milestones
-
-Tick these off as you go, and commit after each one.
-
-- [ ] **1. Curate an anonymized corpus of administrative medical text.**  
-      Hint: Focus on text preprocessing techniques from `lfllm-lfnextword` to clean and tokenize your corpus.
-- [ ] **2. Implement the n-gram language model and apply smoothing.**  
-      Hint: Apply the n-gram counting and probability calculation methods, including smoothing, as covered in `lfllm-lfnextword`.
-- [ ] **3. Develop a text generation feature that suggests words based on input.**  
-      Hint: Use your implemented n-gram model to predict the next word given a sequence, similar to the generation examples in `lfllm-lfnextword`.
-- [ ] **4. Create a CLI for users to interact with the suggestion engine.**  
-      Hint: Design a user-friendly command-line interface to take input and display suggestions from your language model.
+1. **Corpus (data/corpus.txt):** 36 administrative clinic sentences. Names, emails, phones, dates, times and numbers are replaced with placeholders such as <phone> and <date>, then the text is lowercased and tokenized.
+2. **N-gram model with smoothing:** counts every sequence of n words and estimates P(next word | previous n-1 words). Add-k smoothing gives unseen words a small probability. If the context was never seen, it falls back to overall word frequency.
+3. **Suggestions:** the top words by probability for the text typed so far, plus a greedy "draft the rest" mode.
+4. **CLI:** suggest, complete and chat commands.
 
 ## Run it
 
 You need Python 3.12 and git.
 
-```bash
-python3.12 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-cp .env.example .env        # then choose a model; see the comments inside
-python -m app.cli hello
-pytest
-```
+    python3.12 -m venv .venv && source .venv/bin/activate
+    pip install -r requirements.txt
+    cp .env.example .env
+    python -m app.cli hello
+    pytest
 
-Your work goes in `app/core.py` (one stub per milestone) and `tests/test_core.py`. The first tests pass already; they
-check the plumbing.
+## Use it
 
-## Settings and secrets
+    python -m app.cli suggest "please bring your"
+    python -m app.cli suggest "the patient was" --n 2 --top 5
+    python -m app.cli complete "your appointment with"
+    python -m app.cli chat
 
-Model settings live in `.env`, which is ignored by git. **Never commit `.env` or paste a key into code.** If a key ever
-reaches GitHub, treat it as leaked and make a new one.
+Use --n 2 for a bigram model or --n 3 for a trigram model.
 
-## Stretch ideas
+## Files
 
-- Allow the user to specify the n-gram order (e.g., bigram, trigram) at runtime for different suggestion behaviors.
-- Implement a feature to save and load user-specific common phrases or acronyms to influence suggestions.
+- app/core.py: cleaning, n-gram model, suggestions, output formatting.
+- app/cli.py: the command-line interface.
+- tests/test_core.py: one test per milestone.
+- data/corpus.txt: the anonymized training text.
+
+## Notes
+
+- The corpus is small and written for this project, so suggestions are limited to its phrases. Adding more text improves them.
+- Never commit .env.
