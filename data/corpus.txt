@@ -1,0 +1,36 @@
+Please bring your insurance card and photo ID to every visit.
+Please bring your insurance card to the front desk.
+Please arrive 15 minutes before your appointment.
+Please call 555-123-4567 to confirm your appointment on 12/05/2026.
+Your appointment with [DOCTOR] is scheduled for 03/14/2026 at 10:30 AM.
+Your appointment with [DOCTOR] has been confirmed.
+Patient [NAME] was registered at the front desk.
+Patient [NAME] was referred to the cardiology clinic.
+The patient was referred to the physiotherapy clinic for further assessment.
+The patient has been referred to the cardiology clinic for review.
+Insurance details were verified at the time of registration.
+Insurance details were updated in the patient record.
+Please send your medical records to records@clinic.org before the visit.
+Referral letters must be signed by the treating doctor.
+Referral letters are valid for 90 days from the date of issue.
+A follow up appointment has been booked for next week.
+A follow up appointment is recommended in 6 weeks.
+The patient consented to share records with the referring clinic.
+The patient consented to the treatment plan.
+Consent forms must be signed before the procedure.
+Please cancel at least 24 hours before your appointment.
+Late cancellations may incur a fee.
+The clinic is open from 9 AM to 5 PM, Monday to Friday.
+Please contact the front desk if you need to reschedule your appointment.
+Prescription refills require 48 hours notice.
+Prescription refills are sent to the pharmacy of your choice.
+Test results will be shared with the patient within 5 working days.
+Test results will be reviewed by the treating doctor.
+Billing questions should be directed to the billing office.
+The billing office will send an invoice to the insurance provider.
+Please update your contact details at the front desk.
+Please update your address and phone number at registration.
+Patient [NAME] requested a copy of the medical records.
+A copy of the medical records will be sent to the patient.
+Appointment reminders are sent by text message 2 days before the visit.
+Please wear a mask in the waiting area.
