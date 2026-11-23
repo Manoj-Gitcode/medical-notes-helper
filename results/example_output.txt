@@ -1,0 +1,20 @@
+$ pytest -q
+.......                                                                  [100%]
+7 passed in 0.11s
+
+$ python -m app.cli suggest "please bring your"
+Suggestions after "please bring your":
+  1. insurance  (13.0%)
+  2. <date>  (0.6%)
+  3. <doctor>  (0.6%)
+
+$ python -m app.cli suggest "the patient was" --n 2 --top 5
+Suggestions after "the patient was":
+  1. referred  (12.2%)
+  2. registered  (6.4%)
+  3. <date>  (0.6%)
+  4. <doctor>  (0.6%)
+  5. <email>  (0.6%)
+
+$ python -m app.cli complete "your appointment with"
+your appointment with <doctor> has been booked for next week <date>
